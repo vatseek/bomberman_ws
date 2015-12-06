@@ -48,7 +48,7 @@ var responseToField = function(string) {
     }
 
     return fieldObject;
-}
+};
 
 var clearStage = function() {
     for (var i = stage.children.length - 1; i >= 0; i--) {

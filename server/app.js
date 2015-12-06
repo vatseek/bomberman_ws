@@ -21,6 +21,7 @@ const fieldSize = 33;
 
 var WebSocketServer = new require('ws');
 var clients = {};
+var mobs = [];
 var webSocketServer = new WebSocketServer.Server({ port: 8081 });
 
 function initFields() {
@@ -80,9 +81,79 @@ var addBarricade = function(field) {
     return addBarricade(field);
 };
 
+var mobsCount = 6;
+var addMobs = function(field){
+    if (mobsCount < 1) {
+        return field;
+    }
+
+    var x = parseInt(random(0, fieldSize-1));
+    var y = parseInt(random(0, fieldSize-1));
+    if (field[x][y] == NONE) {
+        field[x][y] = MEAT_CHOPPER;
+        mobs.push({x: x, y: y});
+        mobsCount --;
+    }
+
+    return addMobs(field);
+};
+
+var moveMob = function(field) {
+    for (var index in mobs) {
+        var mobX = mobs[index].x;
+        var mobY = mobs[index].y;
+        var posibleStep = [];
+        if (field[mobX][mobY] == MEAT_CHOPPER) {
+            if ((mobX-1 > 0) && field[mobX-1][mobY] == NONE) {
+                posibleStep.push('left');
+            }
+            if (((mobX + 1) < fieldSize) && field[mobX+1][mobY] == NONE) {
+                posibleStep.push('right');
+            }
+            if ((mobY-1 > 0) && field[mobX][mobY-1] == NONE) {
+                posibleStep.push('top');
+            }
+            if (((mobY + 1) < fieldSize) && field[mobX][mobY+1] == NONE) {
+                posibleStep.push('bottom');
+            }
+
+            // No free space
+            if (!posibleStep.length) {
+                continue;
+            }
+
+            var goTo = parseInt(random(0, posibleStep.length));
+            //console.log(goTo, posibleStep);
+
+            field[mobX][mobY] = NONE;
+            switch (posibleStep[goTo]) {
+                case 'left':
+                    field[mobX-1][mobY] = MEAT_CHOPPER;
+                    mobs[index].x = mobX-1;
+                    break;
+                case 'right':
+                    field[mobX+1][mobY] = MEAT_CHOPPER;
+                    mobs[index].x = mobX+1;
+                    break;
+                case 'top':
+                    field[mobX][mobY-1] = MEAT_CHOPPER;
+                    mobs[index].y = mobY-1;
+                    break;
+                case 'bottom':
+                    field[mobX][mobY+1] = MEAT_CHOPPER;
+                    mobs[index].y = mobY+1;
+                    break;
+            }
+        }
+    }
+
+    return field;
+};
+
 // Init game data
 var field = initFields();
 field = addBarricade(field);
+field = addMobs(field);
 
 webSocketServer.on('connection', function (ws) {
     var id = Math.random();
@@ -99,6 +170,7 @@ webSocketServer.on('connection', function (ws) {
 });
 
 setInterval(function() {
+    field = moveMob(field);
     var fieldString = fieldToString(field);
     for (var key in clients) {
         clients[key].send(fieldString);

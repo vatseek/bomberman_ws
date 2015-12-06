@@ -1,5 +1,3 @@
-ace/*
-node_modules
+vendor/
 .env
-Dockerfile
-docker-compose.yml
+server

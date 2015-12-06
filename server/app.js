@@ -17,11 +17,12 @@ const MEAT_CHOPPER          = '&'; // this guys runs over the board randomly and
 const DEAD_MEAT_CHOPPER     = 'x'; // this is chopper corpse
 const NONE                  = ' '; // this is the only place where you can move your Bomberman
 
+const fieldSize = 33;
+
 var WebSocketServer = new require('ws');
 var clients = {};
 var webSocketServer = new WebSocketServer.Server({ port: 8081 });
 
-var fieldSize = 33;
 function initFields() {
     var field = { };
     for (var i = 0; i < fieldSize; i++) {
@@ -40,16 +41,19 @@ function initFields() {
     return field;
 }
 
-var x = 5;
-var y = 5;
+//var x = 5;
+//var y = 5;
+//if (field[x][y] !== WALL) {
+//    field[x-1][y] = NONE;
+//    field[x][y] = BOMBERMAN;
+//    x++;
+//}
 
-function fieldToString(field) {
-    if (field[x][y] !== WALL) {
-        field[x-1][y] = NONE;
-        field[x][y] = BOMBERMAN;
-        x++;
-    }
+function random (low, high) {
+    return Math.random() * (high - low) + low;
+}
 
+var fieldToString = function (field) {
     var result = '';
     for(var i in field) {
         for(var j in field[i]) {
@@ -58,8 +62,27 @@ function fieldToString(field) {
     }
 
     return result;
-}
+};
+
+var barricadeCount = 100;
+var addBarricade = function(field) {
+    if (barricadeCount < 1) {
+        return field;
+    }
+
+    var x = parseInt(random(0, fieldSize-1));
+    var y = parseInt(random(0, fieldSize-1));
+    if (field[x][y] == NONE) {
+        field[x][y] = DESTROY_WALL;
+        barricadeCount --;
+    }
+
+    return addBarricade(field);
+};
+
+// Init game data
 var field = initFields();
+field = addBarricade(field);
 
 webSocketServer.on('connection', function (ws) {
     var id = Math.random();
@@ -70,7 +93,7 @@ webSocketServer.on('connection', function (ws) {
     });
 
     ws.on('close', function () {
-        console.log('соединение закрыто ' + id);
+        console.log('Connection close: ' + id);
         delete clients[id];
     });
 });

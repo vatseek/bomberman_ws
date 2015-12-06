@@ -30,27 +30,6 @@ const MEAT_CHOPPER          = '&'; // this guys runs over the board randomly and
 const DEAD_MEAT_CHOPPER     = 'x'; // this is chopper corpse
 const NONE                  = ' '; // this is the only place where you can move your Bomberman
 
-// TODO: get field from socket
-//var field = (function(string) {
-//    var fieldObject = { };
-//    var j = 0;
-//    var i = 0;
-//    for (var n = 0; n < string.length; n++) {
-//        if (i >= (fieldWidth)) {
-//            i = 0;
-//            j++;
-//        }
-//
-//        if (!fieldObject[j]) {
-//            fieldObject[j] = { };
-//        }
-//        fieldObject[j][i] = string[n];
-//        i++;
-//    }
-//
-//    return fieldObject;
-//})(fieldString);
-
 var responseToField = function(string) {
     var fieldObject = { };
     var j = 0;

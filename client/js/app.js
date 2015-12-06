@@ -130,7 +130,7 @@ var host = 'ws://127.0.0.1:8081';
 window.onload = function() {
     var socket = new WebSocket(host);
     socket.onerror = function(error) {
-        console.log('WebSocket Error: ' + error);
+        alert('Server temporary unavailable');
     };
     socket.onopen = function(event) {
         console.log(event.type);

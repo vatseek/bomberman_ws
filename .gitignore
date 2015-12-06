@@ -1,2 +1,5 @@
-# Created by .ignore support plugin (hsz.mobi)
 ace/*
+node_modules
+.env
+Dockerfile
+docker-compose.yml

@@ -105,8 +105,8 @@ function animate() {
 }
 
 // Get data
-var host = 'ws://127.0.0.1:8081';
-var host = 'wss://stark-island-3564.herokuapp.com/:42513';
+var host = 'ws://127.0.0.1:5000';
+//var host = 'wss://stark-island-3564.herokuapp.com/:42513';
 window.onload = function() {
     var socket = new WebSocket(host);
     socket.onerror = function(error) {

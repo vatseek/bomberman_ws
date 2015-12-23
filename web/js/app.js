@@ -9,7 +9,6 @@ document.body.appendChild(renderer.view);
 renderer.backgroundColor = 0x447a2c;
 
 var stage = new PIXI.Container();
-var fieldString = '********************************** #   # #  #a#  #  #  &        #**a*a*a*#* * * * *a* * *#*#*a*#*#**#aa  a#   # #a   # a#          ** * *#* *a* * *#* * * * *&* * * **     a          # #            ** * * * *a* * *a*#* * * * * * * **#       # #       b& 2  #  #  #**#*a* *#* * * * * * * * *#* * * **#  # a#               # a   #  ** * *#*#* * * * * * * * * * *#* **   #a #      #                 ** * * * *a* * * * * * * * * * *#**     ## #     #   # #   a      ** * *a* * *#* *#* * *a* * * * * **       #a       #      ## # ###** * * *#* * *#* * *#*#*&* * * * **       #       #    k# #     a ** * * *a* * * * * * * * * * *#* **        ## ## a             # #** * * * * * * * * * * * * * * * **                   &    ###  ##** * * * * * *#* *#* * * * * * * **                   a ##        ** * * * * * * * * * * *a*#* * * **     ##         &#         #   ** * * *#* * * * * * * *#* * * * **   #   #         #     # &     **a* * * * * * * * * * * * *#*#* **  #                    ##   &  ** * * * * *#* * * * * * *#* *#* ** #    # &        #       #     **********************************';
 
 const BOMBERMAN             = 'b'; // this is what he usually looks like
 const BOMB_BOMBERMAN        = 'o'; // this is if he is sitting on own bomb
@@ -120,5 +119,12 @@ window.onload = function() {
         var message = event.data;
         var field = responseToField(message);
         createGameField(field);
+        if (typeof(window.main) == 'function') {
+            window.main(field);
+        }
+
+        // Add log to console
+        //$('#console').append('<li>' + message + '</li>');
+        //console.log(message);
     };
 };

@@ -3,18 +3,23 @@ body {
     padding: 0;
     background-color: #333;
 }
-
-/*#editor {*/
-    /*display: block;*/
-    /*position: absolute;*/
-    /*left:820px;*/
-    /*color:#fff;*/
-/*}*/
-
 #editor {
     position: absolute;
-    top: 0;
+    top: 40px;
     bottom: 0;
-    width: 870px;
+    /*width: 550px;*/
+    left: 800px;
     right: 0;
+}
+
+table {
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    display: block;
+}
+
+#run {
+    position: absolute;
+    top:0;
 }

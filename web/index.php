@@ -7,15 +7,31 @@
     <title>Bomberman game</title>
 </head>
 <body>
-<div>
-
-</div>
-<div id="editor">
-function foo(items) {
-    var x = "All this is syntax highlighted";
-    return x;
+<table style="min-width: 1300px;">
+    <tr>
+        <td style="width: 800px; height: 800px;"></td>
+        <td>
+            <input type="button" id="run" value="run" onclick="runCode(); return;"/>
+<div id="editor">/**
+* Enter function (!IMPORTANT NOT REMOVE)
+* @param Object data Object[32x32] with data
+*/
+window.main = function (data) {
+    console.log(data);
 }
 </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div>
+                <ul id="console">
+
+                </ul>
+            </div>
+        </td>
+    </tr>
+</table>
 
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js" crossorigin="anonymous"></script>
@@ -26,6 +42,11 @@ function foo(items) {
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/dawn");
     editor.getSession().setMode("ace/mode/javascript");
+
+    function runCode() {
+        console.log('Run code:');
+        eval(editor.getValue());
+    }
 </script>
 
 <script src="./js/app.js"></script>

@@ -12,12 +12,39 @@
         <td style="width: 800px; height: 800px;"></td>
         <td>
             <input type="button" id="run" value="run" onclick="runCode(); return;"/>
-<div id="editor">/**
+<div id="editor">
+// 'b' - this is what he usually looks like
+// 'o' - this is if he is sitting on own bomb
+// 'd' - oops, your Bomberman is dead (don't worry, he will appear
+// 'a' - this is what other Bombermans looks like
+// 'c' - this is if player just set the bomb
+// 'k' - enemy corpse (it will disappear shortly, right on the next move)
+// '5' - after bomberman set the bomb, the timer starts (5 tacts)
+// '4' - this will blow up after 4 tacts
+// '3' - this after 3
+// '2' - two
+// '1' - one
+// 'w' - Boom! this is what is bomb does, everything that is destroyable
+// '*' - indestructible wall - it will not fall from bomb
+// '#' - this wall could be blowed up
+// 'H' - this is how broken wall looks like, it will dissapear on next move
+// '&' - this guys runs over the board randomly and gets in the way all the time
+// 'x' - this is chopper corpse
+// ' ' - this is the only place where you can move your Bomberman
+
+// User commands
+// UP, DOWN, LEFT, RIGHT, BOOM
+
+/**
 * Enter function (!IMPORTANT NOT REMOVE)
 * @param Object data Object[32x32] with data
+*
+* @returns {string} User command
 */
 window.main = function (data) {
     console.log('new data');
+
+    return 'UP';
 };
 </div>
         </td>

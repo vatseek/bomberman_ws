@@ -17,8 +17,8 @@
 * @param Object data Object[32x32] with data
 */
 window.main = function (data) {
-    console.log(data);
-}
+    console.log('new data');
+};
 </div>
         </td>
     </tr>

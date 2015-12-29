@@ -79,6 +79,10 @@ createGameField = function(field){
                 case BOMB_TIMER_1:
                     zone = PIXI.Sprite.fromImage('_assets/bomb.png');
                     break;
+                case BOOM:
+                    // TODO: add boom sprite
+                    zone = PIXI.Sprite.fromImage('_assets/bomber.png');
+                    break;
                 case MEAT_CHOPPER:
                     zone = PIXI.Sprite.fromImage('_assets/enemy.png');
                     break;

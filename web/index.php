@@ -20,11 +20,51 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Profile</a></li>
                 <li><a href="#">Help</a></li>
             </ul>
+            <form action="" class="navbar-form navbar-right">
+                <fieldset>
+                <div class="form-group">
+                    <select name="" id="skin_theme" class="form-control">
+                        <option value=""></option>
+                        <option value="ambiance">ambiance</option>
+                        <option value="chaos">chaos</option>
+                        <option value="chrome">chrome</option>
+                        <option value="clouds">clouds</option>
+                        <option value="clouds_midnight">clouds_midnight</option>
+                        <option value="cobalt">cobalt</option>
+                        <option value="crimson_editor">crimson_editor</option>
+                        <option value="dawn">dawn</option>
+                        <option value="dreamweaver">dreamweaver</option>
+                        <option value="eclipse">eclipse</option>
+                        <option value="github">github</option>
+                        <option value="idle_fingers">idle_fingers</option>
+                        <option value="iplastic">iplastic</option>
+                        <option value="katzenmilch">katzenmilch</option>
+                        <option value="kr_theme">kr_theme</option>
+                        <option value="kuroir">kuroir</option>
+                        <option value="merbivore">merbivore</option>
+                        <option value="merbivore_soft">merbivore_soft</option>
+                        <option value="mono_industrial">mono_industrial</option>
+                        <option value="monokai">monokai</option>
+                        <option value="pastel_on_dark">pastel_on_dark</option>
+                        <option value="solarized_dark">solarized_dark</option>
+                        <option value="solarized_light">solarized_light</option>
+                        <option value="sqlserver">sqlserver</option>
+                        <option value="terminal">terminal</option>
+                        <option value="textmate">textmate</option>
+                        <option value="tomorrow">tomorrow</option>
+                        <option value="tomorrow_night_blue">tomorrow_night_blue</option>
+                        <option value="tomorrow_night_bright">tomorrow_night_bright</option>
+                        <option value="tomorrow_night_eighties">tomorrow_night_eighties</option>
+                        <option value="tomorrow_night">tomorrow_night</option>
+                        <option value="twilight">twilight</option>
+                        <option value="vibrant_ink">vibrant_ink</option>
+                        <option value="xcode">xcode</option>
+                    </select>
+                </div>
+                </fieldset>
+            </form>
 <!--            <form class="navbar-form navbar-right">-->
 <!--                <input type="text" class="form-control" placeholder="Search...">-->
 <!--            </form>-->
@@ -78,19 +118,11 @@
 
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
 
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/dawn");
-    editor.getSession().setMode("ace/mode/javascript");
-    function runCode() {
-        console.log('Run code:');
-        eval(editor.getValue());
-    }
-</script>
-
 <script src="./js/app.js" defer></script>
+<script src="./js/interface.js" defer></script>
 </body>
 </html>

@@ -50,3 +50,11 @@ table {
 #footer-panel button {
     margin: 7px 10px 0 0;
 }
+#logo {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: url("../_assets/logo.png");
+    float: left;
+    margin-top: 5px;
+}

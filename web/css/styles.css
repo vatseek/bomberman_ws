@@ -37,3 +37,16 @@ table {
     height: 800px;
     background: #aaa;
 }
+
+#footer-panel {
+    width:100%;
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    border:1px solid #101010;
+    background: #222;
+    z-index: 1000;
+}
+#footer-panel button {
+    margin: 10px 10px 0 0;
+}

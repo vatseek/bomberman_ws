@@ -2,14 +2,16 @@ body {
     margin: 0;
     padding: 0;
     background-color: #333;
+    height: 100%;
 }
 #editor {
     position: absolute;
-    top: 40px;
+    top: 55px;
     bottom: 0;
     /*width: 550px;*/
-    left: 800px;
+    left: 840px;
     right: 0;
+    height: 798px;
 }
 
 table {
@@ -22,4 +24,16 @@ table {
 #run {
     position: absolute;
     top:0;
+}
+
+#mainblock {
+    min-width: 1349px;
+    width: 100%;
+    margin-top: 55px;
+}
+.game-field {
+    width: 800px;
+    float: left;
+    height: 800px;
+    background: #aaa;
 }

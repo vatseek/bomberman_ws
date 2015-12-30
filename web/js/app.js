@@ -4,7 +4,10 @@ var frameSize = 24;
 var windowWidth = fieldWidth * frameSize;
 var windowHeight = fieldHeight * frameSize;
 
-var renderer = PIXI.autoDetectRenderer(windowWidth, windowHeight);
+var canvasContainer = document.getElementById("game-field");
+var renderer = PIXI.autoDetectRenderer(windowWidth, windowHeight, {
+    view: canvasContainer
+});
 document.body.appendChild(renderer.view);
 renderer.backgroundColor = 0x447a2c;
 

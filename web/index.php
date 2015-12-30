@@ -7,58 +7,74 @@
     <title>Bomberman game</title>
 </head>
 <body>
-<table style="min-width: 1300px;">
-    <tr>
-        <td style="width: 800px; height: 800px;"></td>
-        <td>
-            <input type="button" id="run" value="run" onclick="runCode(); return;"/>
-<div id="editor">
-// 'b' - this is what he usually looks like
-// 'o' - this is if he is sitting on own bomb
-// 'd' - oops, your Bomberman is dead (don't worry, he will appear
-// 'a' - this is what other Bombermans looks like
-// 'c' - this is if player just set the bomb
-// 'k' - enemy corpse (it will disappear shortly, right on the next move)
-// '5' - after bomberman set the bomb, the timer starts (5 tacts)
-// '4' - this will blow up after 4 tacts
-// '3' - this after 3
-// '2' - two
-// '1' - one
-// 'w' - Boom! this is what is bomb does, everything that is destroyable
-// '*' - indestructible wall - it will not fall from bomb
-// '#' - this wall could be blowed up
-// 'H' - this is how broken wall looks like, it will dissapear on next move
-// '&' - this guys runs over the board randomly and gets in the way all the time
-// 'x' - this is chopper corpse
-// ' ' - this is the only place where you can move your Bomberman
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Bomberman</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+<!--            <form class="navbar-form navbar-right">-->
+<!--                <input type="text" class="form-control" placeholder="Search...">-->
+<!--            </form>-->
+        </div>
+    </div>
+</nav>
+<div class="container" id="mainblock">
+    <div class="row">
+        <canvas class="game-field" id="game-field" width="792" height="792">
 
-// User commands
-// UP, DOWN, LEFT, RIGHT, BOOM
+        </canvas>
+        <div class="code-field">
+            <div id="editor">
+                // 'b' - this is what he usually looks like
+                // 'o' - this is if he is sitting on own bomb
+                // 'd' - oops, your Bomberman is dead (don't worry, he will appear
+                // 'a' - this is what other Bombermans looks like
+                // 'c' - this is if player just set the bomb
+                // 'k' - enemy corpse (it will disappear shortly, right on the next move)
+                // '5' - after bomberman set the bomb, the timer starts (5 tacts)
+                // '4' - this will blow up after 4 tacts
+                // '3' - this after 3
+                // '2' - two
+                // '1' - one
+                // 'w' - Boom! this is what is bomb does, everything that is destroyable
+                // '*' - indestructible wall - it will not fall from bomb
+                // '#' - this wall could be blowed up
+                // 'H' - this is how broken wall looks like, it will dissapear on next move
+                // '&' - this guys runs over the board randomly and gets in the way all the time
+                // 'x' - this is chopper corpse
+                // ' ' - this is the only place where you can move your Bomberman
 
-/**
-* Enter function (!IMPORTANT NOT REMOVE)
-* @param Object data Object[32x32] with data
-*
-* @returns {string} User command
-*/
-window.main = function (data) {
-    console.log('new data');
+                // User commands
+                // UP, DOWN, LEFT, RIGHT, BOOM
 
-    return 'UP';
-};
-</div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <div>
-                <ul id="console">
+                /**
+                * Enter function (!IMPORTANT NOT REMOVE)
+                * @param Object data Object[32x32] with data
+                *
+                * @returns {string} User command
+                */
+                window.main = function (data) {
+                    console.log('new data');
 
-                </ul>
+                    return 'UP';
+                };
             </div>
-        </td>
-    </tr>
-</table>
+        </div>
+    </div>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js" crossorigin="anonymous"></script>
@@ -69,13 +85,12 @@ window.main = function (data) {
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/dawn");
     editor.getSession().setMode("ace/mode/javascript");
-
     function runCode() {
         console.log('Run code:');
         eval(editor.getValue());
     }
 </script>
 
-<script src="./js/app.js"></script>
+<script src="./js/app.js" defer></script>
 </body>
 </html>

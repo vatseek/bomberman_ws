@@ -84,7 +84,7 @@ createGameField = function(field){
                     break;
                 case BOOM:
                     // TODO: add boom sprite
-                    zone = PIXI.Sprite.fromImage('_assets/bomber.png');
+                    zone = PIXI.Sprite.fromImage('_assets/boom.png');
                     break;
                 case MEAT_CHOPPER:
                     zone = PIXI.Sprite.fromImage('_assets/enemy.png');
@@ -111,8 +111,8 @@ function animate() {
 }
 
 // Get data
-//var host = 'ws://127.0.0.1:5000';
-var host = 'wss://stark-island-3564.herokuapp.com/:42513';
+var host = 'ws://127.0.0.1:5000';
+//var host = 'wss://stark-island-3564.herokuapp.com/:42513';
 window.onload = function() {
     var socket = new WebSocket(host);
     socket.onerror = function(error) {
